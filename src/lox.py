@@ -1,9 +1,12 @@
 import sys
 from scanner import Scanner
 from token import Token
+import aux
 
 
 class Lox:
+    hadError: bool = False
+
     @staticmethod
     def main():
         print(sys.argv)
@@ -19,6 +22,8 @@ class Lox:
     def runFile(file_path: str) -> None:
         with open(file_path, "r") as file:
             Lox.run(file)
+        if Lox.hadError:
+            sys.exit(65)
 
     @staticmethod
     def runPrompt() -> None:
@@ -26,6 +31,7 @@ class Lox:
             try:
                 line: str = input("> ")
                 Lox.run(line)
+                Lox.hadError = False
             except (KeyboardInterrupt, EOFError):
                 break
 
@@ -36,6 +42,14 @@ class Lox:
 
         for token in tokens:
             print(token)
+
+    @staticmethod
+    def error(line: int, message: str) -> None:
+        Lox.report(line, "", message)
+
+    @staticmethod
+    def report(line: int, where: str, message: str) -> None:
+        aux.print_to_stderr(f"[line {line}] Error{where}: {message}")
 
 
 if __name__ == "__main__":
