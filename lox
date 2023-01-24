@@ -1,0 +1,8 @@
+#! /usr/bin/env sh
+
+if [ "$#" -gt 1 ]; then
+  echo "Usage: $0 [script]" >&2
+  exit 1
+fi
+
+python "./src/lox.py" "$1"
