@@ -1,8 +1,6 @@
 #! /usr/bin/env sh
 
-if [ "$#" -gt 1 ]; then
-  echo "Usage: $0 [script]" >&2
-  exit 1
-fi
+SRC_DIR='./src'
+MAIN='main.py'
 
-python "./src/lox.py" "$1"
+python "${SRC_DIR}/${MAIN}" "$@"

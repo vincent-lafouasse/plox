@@ -10,10 +10,10 @@ class Lox:
     @staticmethod
     def main():
         print(sys.argv)
-        if len(sys.argv) != 2:
+        if len(sys.argv) > 2:
             print(f"Usage: ./lox [script]")
             sys.exit(64)  # see `sysexits.h`
-        elif sys.argv[1] != "":
+        elif len(sys.argv) == 2:
             Lox.runFile(sys.argv[1])
         else:
             Lox.runPrompt()
@@ -50,7 +50,3 @@ class Lox:
     @staticmethod
     def report(line: int, where: str, message: str) -> None:
         aux.print_to_stderr(f"[line {line}] Error{where}: {message}")
-
-
-if __name__ == "__main__":
-    Lox.main()
