@@ -9,7 +9,6 @@ class Lox:
 
     @staticmethod
     def main():
-        print(sys.argv)
         if len(sys.argv) > 2:
             print(f"Usage: ./lox [script]")
             sys.exit(64)  # see `sysexits.h`
