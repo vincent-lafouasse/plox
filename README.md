@@ -2,9 +2,10 @@
 
 Crafting Interpreters is a great book.
 
-## TODO
-- go further in the book, obviously
-- make another executable maybe
+## Usage
+```sh
+./lox [script]
+```
 
 ## License
 
